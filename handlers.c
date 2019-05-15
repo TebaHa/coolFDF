@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 01:56:07 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/15 11:52:56 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/15 16:11:08 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,43 +25,20 @@ int		rotate_handle(int key, void *param)
 	ft_bzero(img->data_image, img->width * img->height * 4);
 	zbuffer_init(img->zbuffer);
 	if (key == ARROW_UP)
-	{
-		img->window->anglex = 10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){1, 0, 0, 0, 0}, img->window->anglex),  img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){1, 0, 0, 0, 0}, 10),  img->window->q);
 	else if (key == ARROW_DOWN)
-	{
-		img->window->anglex = -10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){1, 0, 0, 0, 0}, img->window->anglex), img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){1, 0, 0, 0, 0}, -10), img->window->q);
 	else if (key == ARROW_LEFT)
-	{
-		img->window->angley = -10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){0, 1, 0, 0, 0}, img->window->angley), img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){0, 1, 0, 0, 0}, -10), img->window->q);
 	else if (key == ARROW_RIGHT)
-	{
-		img->window->angley = 10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){0, 1, 0, 0, 0}, img->window->angley), img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){0, 1, 0, 0, 0}, 10), img->window->q);
 	else if (key == Z_UP)
-	{
-		img->window->anglez = -10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){0, 0, 1, 0, 0}, img->window->anglez), img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){0, 0, 1, 0, 0}, -10), img->window->q);
 	else if (key == Z_DOWN)
-	{
-		img->window->anglez = 10;
-		img->window->q = quaternion_multiply(rotate_around((t_point){0, 0, 1, 0, 0}, img->window->anglez), img->window->q);
-		handle_draw(img);
-	}
+		img->window->q = quaternion_multiply(rotate_around((t_point){0, 0, 1, 0, 0}, 10), img->window->q);
 	else if (key == MAIN_PAD_ESC)
 		exit(1);
+	handle_draw(img);
 	return (0);
 }
 

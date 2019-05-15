@@ -6,16 +6,11 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 01:54:27 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/15 12:16:01 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/15 16:08:42 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <coolfdf.h>
-
-int			ch_in_disp(int x0, int mx)
-{
-	return (mx <= x0);
-}
 
 void		rotate(t_fdf_image * img, t_fdf_poly_list *list, t_fdf_c_terion q)
 {

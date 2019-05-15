@@ -6,103 +6,12 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 08:26:17 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/14 18:04:01 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/15 16:08:35 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <coolfdf.h>
 
-double				get_rad(double angle)
-{
-	return (angle * 3.14 / 180.0);
-}
-/*
-t_fdf_c_matrix4		*create_rot_matrix_x(double angle, int rad)
-{
-	t_fdf_c_matrix4 *matrix;
-
-	if (rad == 0)
-		angle = get_rad(angle);
-	matrix = (t_fdf_c_matrix4 *)malloc(sizeof(t_fdf_c_matrix4));
-	matrix->r0.a = 1;
-	matrix->r1.a = 0;
-	matrix->r2.a = 0;
-	matrix->r3.a = 0;
-	matrix->r0.b = 0;
-	matrix->r1.b = cos(angle);
-	matrix->r2.b = -sin(angle);
-	matrix->r3.b = 0;
-	matrix->r0.c = 0;
-	matrix->r1.c = sin(angle);
-	matrix->r2.c = cos(angle);
-	matrix->r3.c = 0;
-	matrix->r0.d = 0;
-	matrix->r1.d = 0;
-	matrix->r2.d = 0;
-	matrix->r3.d = 1;
-	return (matrix);
-}
-
-t_fdf_c_matrix4		*create_rot_matrix_y(double angle, int rad)
-{
-	t_fdf_c_matrix4 *matrix;
-
-	if (rad == 0)
-		angle = get_rad(angle);
-	matrix = (t_fdf_c_matrix4 *)malloc(sizeof(t_fdf_c_matrix4));
-	matrix->r0.a = cos(angle);
-	matrix->r1.a = 0;
-	matrix->r2.a = sin(angle);
-	matrix->r3.a = 0;
-	matrix->r0.b = 0;
-	matrix->r1.b = 1;
-	matrix->r2.b = 0;
-	matrix->r3.b = 0;
-	matrix->r0.c = -sin(angle);
-	matrix->r1.c = 0;
-	matrix->r2.c = cos(angle);
-	matrix->r3.c = 0;
-	matrix->r0.d = 0;
-	matrix->r1.d = 0;
-	matrix->r2.d = 0;
-	matrix->r3.d = 1;
-	return (matrix);
-}
-
-t_fdf_c_matrix4		*create_rot_matrix_z(double angle, int rad)
-{
-	t_fdf_c_matrix4 *matrix;
-
-	if (rad == 0)
-		angle = get_rad(angle);
-	matrix = (t_fdf_c_matrix4 *)malloc(sizeof(t_fdf_c_matrix4));
-	matrix->r0.a = cos(angle);
-	matrix->r1.a = -sin(angle);
-	matrix->r2.a = 0;
-	matrix->r3.a = 0;
-	matrix->r0.b = sin(angle);
-	matrix->r1.b = cos(angle);
-	matrix->r2.b = 0;
-	matrix->r3.b = 0;
-	matrix->r0.c = 0;
-	matrix->r1.c = 0;
-	matrix->r2.c = 1;
-	matrix->r3.c = 0;
-	matrix->r0.d = 0;
-	matrix->r1.d = 0;
-	matrix->r2.d = 0;
-	matrix->r3.d = 1;
-	return (matrix);
-}
-
-void				matrix_multiply(t_point *a, t_fdf_c_matrix4 *rot_matrix)
-{
-	a->x = (int)((double)(((double)a->x) * rot_matrix->r0.a) + (double)(((double)a->y) * rot_matrix->r1.a) + (double)(((double)a->z) * rot_matrix->r2.a) + (double)(((double)a->w) * rot_matrix->r3.a));
-	a->y = (int)((double)(((double)a->x) * rot_matrix->r0.b) + (double)(((double)a->y) * rot_matrix->r1.b) + (double)(((double)a->z) * rot_matrix->r2.b) + (double)(((double)a->w) * rot_matrix->r3.b));
-	a->z = (int)((double)(((double)a->x) * rot_matrix->r0.c) + (double)(((double)a->y) * rot_matrix->r1.c) + (double)(((double)a->z) * rot_matrix->r2.c) + (double)(((double)a->w) * rot_matrix->r3.c));
-	a->w = (int)((double)(((double)a->x) * rot_matrix->r0.d) + (double)(((double)a->y) * rot_matrix->r1.d) + (double)(((double)a->z) * rot_matrix->r2.d) + (double)(((double)a->w) * rot_matrix->r3.d));
-}
-*/
 t_fdf_c_terion	quaternion_multiply(t_fdf_c_terion first, t_fdf_c_terion second)
 {
 	t_fdf_c_terion	res;
