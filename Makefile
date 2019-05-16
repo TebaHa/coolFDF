@@ -6,7 +6,7 @@
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/07 21:38:57 by zytrams           #+#    #+#              #
-#    Updated: 2019/05/14 16:43:08 by zytrams          ###   ########.fr        #
+#    Updated: 2019/05/15 17:59:05 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRCS_LIST =	coolfdf.c \
 			matrixmath.c \
 			zoom.c \
 			info.c \
+			render.c \
+			rasterizer.c
 
 OBJS_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
 

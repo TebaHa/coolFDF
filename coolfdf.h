@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 21:40:51 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/14 19:08:18 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/16 16:15:46 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct				s_fdf_image
 	int						offsetx;
 	int						offsety;
 	int						offsetz;
+	t_point					idle_normal;
 }							t_fdf_image;
 
 typedef struct				s_fdf_c_vec2f
@@ -176,7 +177,6 @@ t_fdf_c_vector3				*create_vector(t_point *a, t_point *b);
 t_fdf_c_vector3				*calc_normal(t_fdf_poly *poly);
 void						normalize_vec3(t_fdf_c_vector3 *normal);
 double						magnitude(t_fdf_c_vector3 *normal);
-int							ft_sqrt(int num);
 t_fdf_c_matrix4				*create_rot_matrix_x(double angle, int rad);
 t_fdf_c_matrix4				*create_rot_matrix_y(double angle, int rad);
 t_fdf_c_matrix4				*create_rot_matrix_z(double angle, int rad);

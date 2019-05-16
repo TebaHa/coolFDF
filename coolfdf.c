@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 21:39:19 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/14 19:09:40 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/16 16:16:56 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_point				*calc_middle_point(t_point *a, t_point *b, t_point *c, t_point *d)
 	resl->y = ((a->y - b->y) / 2) + b->y;
 	zmin = ft_min(a->z, ft_min(b->z ,ft_min(c->z, d->z)));
 	zmax = ft_max(a->z, ft_max(b->z ,ft_max(c->z, d->z)));
-	resl->z = (ft_abs(zmax - zmin) / 2) + zmin;
+	resl->z = (abs(zmax - zmin) / 2) + zmin;
 	resl->color = WHITE;
 	return (resl);
 }
@@ -217,6 +217,7 @@ int		main(int argc, char **argv)
 	win_main.angley = 10;
 	win_main.anglez = 10;
 	win_main.q = (t_fdf_c_terion){0, 0, 0, 1};
+	image.idle_normal = (t_point){0, 1, 0};
 	draw_land_scapes(win_main.mlx, win_main.win_ptr, win_main.mtrx, &image);
 	mlx_hook(win_main.win_ptr, 2, 0, rotate_handle, &image);
 	mlx_hook(win_main.win_ptr, 3, 0, zoom_handle, &image);

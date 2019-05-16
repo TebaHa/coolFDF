@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 06:35:00 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/15 15:48:02 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/16 17:00:01 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_fdf_c_vector3			*create_vector(t_point *a, t_point *b)
 
 double					magnitude(t_fdf_c_vector3 *normal)
 {
-	return (double)ft_sqrt((normal->x * normal->x) +
+	return (double)sqrt((normal->x * normal->x) +
 	(normal->y * normal->y) + (normal->z * normal->z));
 }
 
@@ -87,9 +87,11 @@ t_fdf_c_vector3			*calc_normal(t_fdf_poly *poly)
 		point_swap(&(t0), &(t2));
 	if (t1.y > t2.y)
 		point_swap(&(t1), &(t2));
-	vec1 = create_vector(&(t0), &(t2));
-	vec2 = create_vector(&(t0), &(t1));
+	vec1 = create_vector(&(t2), &(t0));
+	vec2 = create_vector(&(t1), &(t0));
 	normal = cross_vec3(vec1, vec2);
+	if (normal->y < 0)
+		normal->y = -normal->y;
 	normalize_vec3(normal);
 	free(vec1);
 	free(vec2);

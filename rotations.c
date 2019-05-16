@@ -6,16 +6,17 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 01:54:27 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/15 16:08:42 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/16 16:58:30 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <coolfdf.h>
 
-void		rotate(t_fdf_image * img, t_fdf_poly_list *list, t_fdf_c_terion q)
+void		rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_c_terion q)
 {
 	t_fdf_poly_list	*t_list;
 	t_fdf_poly		t_poly;
+	t_fdf_c_vector3	t_normal;
 
 	t_list = list;
 	t_poly.color = GREEN;
