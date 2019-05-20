@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/07 21:38:57 by zytrams           #+#    #+#              #
-#    Updated: 2019/05/15 17:59:05 by zytrams          ###   ########.fr        #
+#    Created: 2019/05/18 13:38:53 by zytrams           #+#    #+#              #
+#    Updated: 2019/05/19 17:42:38 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,32 +16,49 @@ FLAGS = -Wall -Wextra -Werror
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./lib/libft/
+LIBFT_DIRECTORY_HEADERS = $(LIBFT_DIRECTORY)/includes
 
-SRCS_LIST =	coolfdf.c \
+SRCS_LIST =	fdf.c \
 			bresenham.c \
-			reader.c \
-			move.c	\
-			3dmath.c \
 			handlers.c \
-			rotations.c \
-			matrixmath.c \
+			imageput.c \
+			polygonizer.c \
+			quaterionmagic.c \
+			rasterizer.c \
+			reader.c \
+			rotate.c \
+			zbuffer.c \
+			normal.c \
 			zoom.c \
-			info.c \
-			render.c \
-			rasterizer.c
+			junk.c
+
+MINILIB = $(MINILIB_DIRECTORY)libmlx.a
+MINILIB_DIRECTORY = ./lib/minilibx/sierra/
+
+OBJS_DIRECTORY = ./objs/
+SRCS_DIRECTORY = ./srcs/
+
+HEADERS_DIRECTORY = ./includes/
+HEADERS_LIST = fdf.h
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
+INCLUDES = -I$(HEADERS_DIRECTORY)
+
+SRCS = $(addprefix $(SRCS_DIRECTORY), $(SRCS_LIST))
+OBJS = $(addprefix $(OBJS_DIRECTORY), $(OBJS_LIST))
 
 OBJS_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
 
-MINILIB = $(MINILIB_DIRECTORY)libmlx.a
-MINILIB_DIRECTORY = ./lib/minilibx/
-
 all: $(NAME)
 
-$(NAME): $(MINILIB) $(LIBFT) $(OBJS_LIST)
-	$(CC) -o $(NAME) $(OBJS_LIST) -lmlx -framework OpenGL -framework AppKit -L lib/minilibx/ $(LIBFT) -g
+$(NAME): $(MINILIB) $(LIBFT) $(OBJS_DIRECTORY) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) -lmlx -framework OpenGL -framework AppKit -L lib/minilibx/ $(LIBFT) -g
 
-$(OBJS_LIST):
-	$(CC) -c $(SRCS_LIST) -I ./ -I lib/libft/includes -g
+$(OBJS_DIRECTORY):
+	@mkdir -p $(OBJS_DIRECTORY)
+	@echo "$(NAME): $(OBJS_DIRECTORY) was created"
+
+$(OBJS_DIRECTORY)%.o: $(SRCS_DIRECTORY)%.c $(HEADERS)
+	@$(CC) $(FLAGS) -c $(INCLUDES) -I $(LIBFT_DIRECTORY_HEADERS) -I $(MINILIB_DIRECTORY) $< -o $@ -g
 
 $(MINILIB):
 	@$(MAKE) -sC $(MINILIB_DIRECTORY)
@@ -50,7 +67,7 @@ $(LIBFT):
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 
 clean:
-	@rm -rf *.o
+	@rm -rf $(OBJS_DIRECTORY)/*.o
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
 	@$(MAKE) -sC $(MINILIB_DIRECTORY) clean
 

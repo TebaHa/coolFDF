@@ -1,11 +1,3 @@
-# coolFDF
-THIS IS COOL FDF (sort of)
+# FdF_RE
 
-* classic wireframe  +
-* polygones +
-* global lighting +
-* shaders -
-* gradient colors - 
-* shadows -
-
-*** NOT NORMINETED ***
+# MAKE FdF GREAT AGAIN!
