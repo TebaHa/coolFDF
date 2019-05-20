@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 21:40:51 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/16 16:15:46 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/18 17:10:07 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,6 @@ typedef struct				s_fdf_image
 	int						offsetz;
 	t_point					idle_normal;
 }							t_fdf_image;
-
-typedef struct				s_fdf_c_vec2f
-{
-	int						a;
-	int						b;
-}							t_fdf_c_vec2f;
 
 void						normalize_points(t_fdf_matrix *mtrx, t_fdf_image *img, int mx, int my);
 void						draw_land_scapes(void *mxl_ptr, void *win_ptr, t_fdf_matrix	*mtrx, t_fdf_image *img);
