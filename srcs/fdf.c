@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/19 18:30:26 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 14:12:34 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void				image_initilize(t_fdf_image *img)
 	&(img->bpp), &(img->size_line), &(img->endian));
 	img->offsetx = WIN_WIDTH / 2;
 	img->offsety = WIN_HEIGTH / 2;
-	img->qtr = (t_fdf_qterion){0, 0, 0, 1};
+	img->anglex = 0;
+	img->angley = 0;
+	img->anglez = 0;
 	img->scalex = 5;
 	img->scaley = 5;
 	img->scalez = 0.5;

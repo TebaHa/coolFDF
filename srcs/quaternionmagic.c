@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quaterionmagic.c                                   :+:      :+:    :+:   */
+/*   quaternionmagic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:15:52 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 21:05:27 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 16:25:06 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-t_fdf_qterion	quaternion_multiply(t_fdf_qterion first, t_fdf_qterion second)
+t_fdf_qternion	quaternion_multiply(t_fdf_qternion first, t_fdf_qternion second)
 {
-	t_fdf_qterion	res;
+	t_fdf_qternion	res;
 
 	res.w = first.w * second.w - first.x * second.x
 	- first.y * second.y - first.z * second.z;
@@ -27,9 +27,9 @@ t_fdf_qterion	quaternion_multiply(t_fdf_qterion first, t_fdf_qterion second)
 	return (res);
 }
 
-t_fdf_qterion	rotate_around(t_point axis, double angle)
+t_fdf_qternion	rotate_around(t_point axis, double angle)
 {
-	t_fdf_qterion	res;
+	t_fdf_qternion	res;
 
 	angle = angle * M_PI / 180.0;
 	res.w = cos(angle / 2);
@@ -39,16 +39,23 @@ t_fdf_qterion	rotate_around(t_point axis, double angle)
 	return (res);
 }
 
-t_point			project_q(t_point *origin, t_fdf_qterion rot, double scales[3])
+t_point			project_q(t_point *origin, t_fdf_qternion rot, double scales[3])
 {
 	t_point a;
+	t_point	org;
 
-	a.x = (1 - 2 * pow(rot.y, 2) - 2.0 * pow(rot.z, 2)) * origin->x + (2 * rot.x * rot.y - 2 * rot.w * rot.z) * origin->y + (2 * rot.x * rot.z + 2 * rot.w * rot.y) * origin->z;
-	a.y = (2 * rot.x * rot.y + 2 * rot.w * rot.z) * origin->x + (1 - 2 * pow(rot.x, 2) - 2 * pow(rot.z, 2)) * origin->y + (2 * rot.y * rot.z + 2 * rot.w * rot.x) * origin->z;
-	a.z = (2 * rot.x * rot.z - 2 * rot.w * rot.y) * origin->x + (2 * rot.y * rot.z - 2 * rot.w * rot.x) * origin->y + (1 - 2 * pow(rot.x, 2) - 2 * pow(rot.y, 2)) * origin->z;
-	a.x *= scales[0];
-	a.y *= scales[1];
-	a.z *= scales[2];
+	org.x = origin->x * scales[0];
+	org.y = origin->y * scales[1];
+	org.z = origin->z * scales[2];
+	a.x = (1 - 2 * pow(rot.y, 2) - 2.0 * pow(rot.z, 2)) * org.x
+	+ (2 * rot.x * rot.y - 2 * rot.w * rot.z) * org.y
+	+ (2 * rot.x * rot.z + 2 * rot.w * rot.y) * org.z;
+	a.y = (2 * rot.x * rot.y + 2 * rot.w * rot.z) * org.x
+	+ (1 - 2 * pow(rot.x, 2) - 2 * pow(rot.z, 2)) * org.y
+	+ (2 * rot.y * rot.z - 2 * rot.w * rot.x) * org.z;
+	a.z = (2 * rot.x * rot.z - 2 * rot.w * rot.y) * org.x
+	+ (2 * rot.y * rot.z + 2 * rot.w * rot.x) * org.y
+	+ (1 - 2 * pow(rot.x, 2) - 2 * pow(rot.y, 2)) * org.z;
 	a.x += WIN_WIDTH / 2;
 	a.y += WIN_HEIGTH / 2;
 	return (a);

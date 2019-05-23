@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 20:50:23 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 16:28:23 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # include <fcntl.h>
 # include <math.h>
 # include <macroses.h>
+
+typedef struct				s_fdf_vec4
+{
+	double					x;
+	double					y;
+	double					z;
+	double					w;
+}							t_fdf_vec4;
 
 typedef struct				s_fdf_vec3
 {
@@ -47,11 +55,11 @@ typedef	struct				s_point
 
 typedef struct				s_fdf_qterion
 {
-	double					x;
-	double					y;
-	double					z;
-	double					w;
-}							t_fdf_qterion;
+	float					x;
+	float					y;
+	float					z;
+	float					w;
+}							t_fdf_qternion;
 
 typedef struct				s_fdf_list
 {
@@ -103,7 +111,10 @@ typedef struct				s_fdf_image
 	double					scalex;
 	double					scaley;
 	double					scalez;
-	t_fdf_qterion			qtr;
+	int						anglex;
+	int						angley;
+	int						anglez;
+	t_fdf_qternion			qtr;
 	t_fdf_poly_list			*polygones;
 }							t_fdf_image;
 
@@ -147,9 +158,9 @@ void						triangle_lines(t_fdf_poly *t, t_fdf_image *image);
 void						bresenham_line(t_point *beg, t_point *end, t_fdf_image *image, int color);
 
 // QUATERION
-t_fdf_qterion				quaternion_multiply(t_fdf_qterion first, t_fdf_qterion second);
-t_fdf_qterion				rotate_around(t_point axis, double angle);
-t_point						project_q(t_point *origin, t_fdf_qterion rot, double scales[3]);
+t_fdf_qternion				quaternion_multiply(t_fdf_qternion first, t_fdf_qternion second);
+t_fdf_qternion				rotate_around(t_point axis, double angle);
+t_point						project_q(t_point *origin, t_fdf_qternion rot, double scales[3]);
 
 // JUNK
 void						ft_swap(int  *a, int *b);
@@ -157,7 +168,7 @@ void						point_swap(t_point *t0, t_point *t1);
 void						put_on_image(int x, int y, int color, t_fdf_image *image);
 
 //ROTATE
-void						rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qterion q);
+void						rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qternion q);
 
 //NORMAL
 t_fdf_vec3					calc_normal(t_fdf_poly *poly);

@@ -6,42 +6,43 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:06:49 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 19:07:09 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 15:29:49 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-int		rotate_handle(int key, void *param)
+int					rotate_handle(int key, void *param)
 {
 	t_fdf_image		*img;
 
 	img = (t_fdf_image *)param;
+	img->qtr = (t_fdf_qternion){0, 0, 0, 1};
 	if (key == ARROW_UP)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){1, 0, 0}, 10), img->qtr);
+		img->anglex += 10;
 	else if (key == ARROW_DOWN)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){1, 0, 0}, -10), img->qtr);
-	else if (key == ARROW_LEFT)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){0, 1, 0}, -10), img->qtr);
+		img->anglex -= 10;
+	if (key == ARROW_LEFT)
+		img->angley -= 10;
 	else if (key == ARROW_RIGHT)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){0, 1, 0}, 10), img->qtr);
-	else if (key == Z_UP)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){0, 0, 1}, -10), img->qtr);
+		img->angley += 10;
+	if (key == Z_UP)
+		img->anglez += 10;
 	else if (key == Z_DOWN)
-		img->qtr = quaternion_multiply(
-		rotate_around((t_point){0, 0, 1}, 10), img->qtr);
-	else if (key == MAIN_PAD_ESC)
+		img->anglez -= 10;
+	if (key == MAIN_PAD_ESC)
 		exit(1);
+	img->qtr = quaternion_multiply(
+		rotate_around((t_point){0, 0, 1}, img->anglez), img->qtr);
+	img->qtr = quaternion_multiply(
+		rotate_around((t_point){0, 1, 0}, img->angley), img->qtr);
+	img->qtr = quaternion_multiply(
+		rotate_around((t_point){1, 0, 0}, img->anglex), img->qtr);
 	handle_draw(img);
 	return (0);
 }
 
-int		zoom_handle(int key, void *param)
+int					zoom_handle(int key, void *param)
 {
 	t_fdf_image		*img;
 
@@ -54,7 +55,7 @@ int		zoom_handle(int key, void *param)
 	return (0);
 }
 
-void	handle_draw(t_fdf_image *img)
+void				handle_draw(t_fdf_image *img)
 {
 	t_fdf_poly_list	*list;
 	void			*mlx;

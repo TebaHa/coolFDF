@@ -6,13 +6,13 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:23:32 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 20:58:13 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 14:43:05 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void		rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qterion q)
+void		rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qternion q)
 {
 	t_fdf_poly_list	*t_list;
 	t_fdf_poly		t_poly;
@@ -29,7 +29,7 @@ void		rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qterion q)
 		(double [3]){img->scalex, img->scaley, img->scalez});
 		t_poly.normal = calc_normal(&t_poly);
 		triangle(&t_poly, img);
-		triangle_lines(&t_poly, img);
+		//triangle_lines(&t_poly, img);
 		t_list = t_list->next;
 	}
 }

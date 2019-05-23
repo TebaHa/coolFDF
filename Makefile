@@ -6,7 +6,7 @@
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/18 13:38:53 by zytrams           #+#    #+#              #
-#    Updated: 2019/05/19 17:42:38 by zytrams          ###   ########.fr        #
+#    Updated: 2019/05/20 22:23:53 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS_LIST =	fdf.c \
 			handlers.c \
 			imageput.c \
 			polygonizer.c \
-			quaterionmagic.c \
+			quaternionmagic.c \
 			rasterizer.c \
 			reader.c \
 			rotate.c \

@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:07:28 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 18:03:33 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 14:45:43 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_fdf_list			*add_new_point(int x, int y, int z)
 	newlst = (t_fdf_list *)malloc(sizeof(t_fdf_list));
 	newlst->p.x = x;
 	newlst->p.y = y;
-	newlst->p.z = z * 5;
+	newlst->p.z = z * 30;
 	newlst->next = NULL;
 	return (newlst);
 }

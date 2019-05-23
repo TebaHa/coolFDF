@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:20:08 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 21:07:48 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 13:55:18 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	triangle(t_fdf_poly *t, t_fdf_image *image)
 		point_swap(&(t1), &(t2));
 	total_height = (t2.y) - (t0.y);
 	i = 0;
-	intensity = t->normal.x * 0 + t->normal.y * 0 + t->normal.z * 1;
+	intensity = t->normal.x * 0 + t->normal.y * 0 + t->normal.z * 0.90;
 	intensity = intensity > 1 ? 1 : intensity;
 	if (intensity < 0)
 		return ;

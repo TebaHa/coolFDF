@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:29:02 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/19 18:40:44 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/21 18:42:07 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,9 @@ t_fdf_poly_list		*create_list_of_polygones(t_fdf_matrix *mtrx)
 	t_fdf_matrix	*mtrx_curr;
 	t_fdf_poly_list	*list_tmp;
 	t_point			middle;
-	int				i;
 
 	mtrx_curr = mtrx;
 	list_tmp = NULL;
-	i = 0;
 	while (mtrx_curr->next != NULL)
 	{
 		mtrx_prev = mtrx_curr;
@@ -100,7 +98,6 @@ t_fdf_poly_list		*create_list_of_polygones(t_fdf_matrix *mtrx)
 			create_polygone(&lst1->next->p, &lst2->next->p, &middle, WHITE));
 			lst1 = lst1->next;
 			lst2 = lst2->next;
-			i++;
 		}
 	}
 	return (list_tmp);

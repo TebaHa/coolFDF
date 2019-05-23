@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:32:04 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 20:52:34 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/21 20:11:32 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ t_fdf_vec3		calc_normal(t_fdf_poly *poly)
 	t[0] = (t_point){poly->p0.x, poly->p0.y, poly->p0.z};
 	t[1] = (t_point){poly->p1.x, poly->p1.y, poly->p1.z};
 	t[2] = (t_point){poly->p2.x, poly->p2.y, poly->p2.z};
-	vec1 = create_vector(&(t[0]), &(t[2]));
-	vec2 = create_vector(&(t[1]), &(t[2]));
+	vec1 = create_vector(&(t[2]), &(t[1]));
+	vec2 = create_vector(&(t[1]), &(t[0]));
 	normal = cross_vec3(vec1, vec2);
 	normalize_vec3(&normal);
 	if (normal.y < 0)
