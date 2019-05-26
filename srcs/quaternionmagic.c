@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:15:52 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 16:25:06 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/26 18:26:36 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,5 @@ t_point			project_q(t_point *origin, t_fdf_qternion rot, double scales[3])
 	a.z = (2 * rot.x * rot.z - 2 * rot.w * rot.y) * org.x
 	+ (2 * rot.y * rot.z + 2 * rot.w * rot.x) * org.y
 	+ (1 - 2 * pow(rot.x, 2) - 2 * pow(rot.y, 2)) * org.z;
-	a.x += WIN_WIDTH / 2;
-	a.y += WIN_HEIGTH / 2;
 	return (a);
 }

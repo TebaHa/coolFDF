@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 16:28:23 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/23 18:43:13 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,8 @@ t_fdf_vec3					cross_vec3(t_fdf_vec3 v1, t_fdf_vec3 v2);
 
 //EXIT
 void						ft_exit(int a);
+
+t_fdf_mat4					getzeroaffinmat4(void);
+t_fdf_vec4					matrix_on_vec_multiply(t_fdf_mat4 a, t_fdf_vec4 b);
 
 #endif
