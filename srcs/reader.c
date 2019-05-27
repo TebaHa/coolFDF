@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:07:28 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/26 18:56:44 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 06:02:29 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_fdf_list			*add_new_point(int x, int y, int z)
 	newlst = (t_fdf_list *)malloc(sizeof(t_fdf_list));
 	newlst->p.x = x;
 	newlst->p.y = y;
-	newlst->p.z = z * 30;
+	newlst->p.z = z;
 	newlst->next = NULL;
 	return (newlst);
 }
@@ -28,7 +28,7 @@ t_fdf_matrix		*create_line_of_matrix(void)
 {
 	t_fdf_matrix	*mtrx;
 
-	mtrx = (t_fdf_matrix *)malloc(sizeof(t_fdf_matrix));
+	mtrx = (t_fdf_matrix *)ft_memalloc(sizeof(t_fdf_matrix));
 	mtrx->list = NULL;
 	mtrx->next = NULL;
 	return (mtrx);

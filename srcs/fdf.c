@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 18:43:52 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 03:59:58 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void				image_initilize(t_fdf_image *img)
 	img->anglex = 0;
 	img->angley = 0;
 	img->anglez = 0;
-	img->scalex = 5;
-	img->scaley = 5;
-	img->scalez = 0.5;
+	img->scalex = 8;
+	img->scaley = 8;
+	img->scalez = 8;
 	ft_bzero(img->ptr_data, img->size_line);
-	img->polygones = create_list_of_polygones(img->ptr_fdf_window->mtrx_data);
+	img->polygones = create_list_of_polygones(img->ptr_fdf_window->mtrx_data, 0xDDA0DD);
 	normalize_polylist(img->polygones);
 }
 

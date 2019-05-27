@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 18:43:13 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 04:44:16 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # define BLACK 0x000000
 # define GREEN 0x00FF00
 # define RED 0xFF4500
-# define WIN_WIDTH 1200
-# define WIN_HEIGTH 800
+# define WIN_WIDTH 2400
+# define WIN_HEIGTH 1200
+# define PERSPECTIVE 1500
 # include <stdlib.h>
 # include <stdio.h>
 # include <mlx.h>
@@ -134,7 +135,7 @@ t_fdf_matrix				*fdf_reader(char *filename);
 void						zbuffer_init(int *zbuffer);
 
 // POLYGONIZER
-t_fdf_poly_list				*create_list_of_polygones(t_fdf_matrix *mtrx);
+t_fdf_poly_list				*create_list_of_polygones(t_fdf_matrix *mtrx, int color);
 t_point						calc_middle_point(t_point *a, t_point *b, t_point *c, t_point *d);
 void						add_polygone_to_list(t_fdf_poly_list **list, t_fdf_poly_list *new_lst);
 t_fdf_poly_list				*create_polygone(t_point *t0, t_point *t1, t_point *t2, int color);
@@ -182,5 +183,10 @@ void						ft_exit(int a);
 
 t_fdf_mat4					getzeroaffinmat4(void);
 t_fdf_vec4					matrix_on_vec_multiply(t_fdf_mat4 a, t_fdf_vec4 b);
+
+//COLORIZER
+double						percent(int start, int end, int current);
+int							get_light(int start, int end, double percentage);
+int							get_color(int current, int start, int end, int colors[2]);
 
 #endif

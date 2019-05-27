@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:06:49 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 15:29:49 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 03:15:55 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int					rotate_handle(int key, void *param)
 	img = (t_fdf_image *)param;
 	img->qtr = (t_fdf_qternion){0, 0, 0, 1};
 	if (key == ARROW_UP)
-		img->anglex += 10;
+		img->anglex += 5;
 	else if (key == ARROW_DOWN)
-		img->anglex -= 10;
+		img->anglex -= 5;
 	if (key == ARROW_LEFT)
-		img->angley -= 10;
+		img->angley -= 5;
 	else if (key == ARROW_RIGHT)
-		img->angley += 10;
+		img->angley += 5;
 	if (key == Z_UP)
-		img->anglez += 10;
+		img->anglez += 5;
 	else if (key == Z_DOWN)
-		img->anglez -= 10;
+		img->anglez -= 5;
 	if (key == MAIN_PAD_ESC)
 		exit(1);
 	img->qtr = quaternion_multiply(

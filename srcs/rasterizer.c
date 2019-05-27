@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:20:08 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/23 13:55:18 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 06:38:39 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ void	triangle(t_fdf_poly *t, t_fdf_image *image)
 	i = 0;
 	intensity = t->normal.x * 0 + t->normal.y * 0 + t->normal.z * 0.90;
 	intensity = intensity > 1 ? 1 : intensity;
-	if (intensity < 0)
+	if (intensity <= 0)
 		return ;
-	t->color =  ((int)(intensity * 255)) | ((int)(intensity * 255)) << 8 | ((int)(intensity * 255)) << 16 | (0 << 24);
 	while (i < total_height)
 	{
 		second_half = i > t1.y - t0.y || t1.y == t0.y;
@@ -69,9 +68,14 @@ void	triangle(t_fdf_poly *t, t_fdf_image *image)
 			p.x = A.x + (B.x - A.x) * phi;
 			p.y = A.y + (B.y - A.y) * phi;
 			p.z = A.z + (B.z - A.z) * phi;
-			if (((p.x > 0 && p.x < WIN_WIDTH) && (p.y > 0 && p.y < WIN_HEIGTH))
-			&& (image->zbuffer[p.x + p.y * WIN_WIDTH] < p.z))
+			if (((p.x >= 0 && p.x < WIN_WIDTH) && (p.y >= 0 && p.y < WIN_HEIGTH))
+			&& (image->zbuffer[p.x + p.y * WIN_WIDTH] <= p.z) && p.z < PERSPECTIVE)
 			{
+				t->color = get_color(p.z, 1600, -300, (int[2]){0x00FFFF, 0xC9A0DC});
+				t->color = ((int)(intensity * (t->color & 0x000000FF))
+				| ((int)(intensity * ((t->color >> 8) & 0x000000FF))) << 8
+				| ((int)(intensity * ((t->color >> 16) & 0x000000FF))) << 16
+				| (0 << 24));
 				image->zbuffer[p.x + p.y * WIN_WIDTH] = p.z;
 				put_on_image(p.x, p.y, t->color, image);
 			}

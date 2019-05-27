@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:13:30 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/20 21:00:56 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 06:27:20 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,16 @@ void	bresenham_line(t_point *beg, t_point *end,
 	x = b.x;
 	while (x <= e.x)
 	{
-		if ((steep && ((x > 0 && x < WIN_HEIGTH) && (y > 0 && y < WIN_WIDTH) &&
-		 (image->zbuffer[y + x * WIN_WIDTH] <= fmax(beg->z, end->z))))
-		|| (!steep && ((y > 0 && y < WIN_HEIGTH) && (x > 0 && x < WIN_WIDTH))
+		if (((steep && ((x >= 0 && x < WIN_HEIGTH) && (y >= 0 && y < WIN_WIDTH) &&
+		(image->zbuffer[y + x * WIN_WIDTH] <= fmax(beg->z, end->z))))
+		|| (!steep && ((y >= 0 && y < WIN_HEIGTH) && (x >= 0 && x < WIN_WIDTH))
 		&& (image->zbuffer[x + y * WIN_WIDTH] <= fmax(beg->z, end->z))))
+		&& fmax(beg->z, end->z) < PERSPECTIVE)
+		{
+			color = get_color(dx > dy ? steep ? y : x : steep ? x : y, 0, dx > dy ? WIN_WIDTH * 0.8 : WIN_HEIGTH * 0.8,
+			(int[2]){0x00FFFF, 0xC9A0DC});
 			put_on_image(steep ? y : x, steep ? x : y, color, image);
+		}
 		error2 += derror2;
 		if (error2 > dx)
 		{
