@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:29:02 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 06:02:47 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 08:39:13 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_point				calc_middle_point(t_point *a, t_point *b,
 	resl.y = ((a->y - b->y) / 2) + b->y;
 	zmin = fmin(a->z, fmin(b->z, fmin(c->z, d->z)));
 	zmax = fmax(a->z, fmax(b->z, fmax(c->z, d->z)));
-	resl.z = (abs(zmax - zmin) / 2) + zmin;
+	resl.z = round(((abs(zmax - zmin) / 2) + zmin));
 	return (resl);
 }
 

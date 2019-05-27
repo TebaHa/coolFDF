@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 03:59:58 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 09:16:11 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,20 @@ void				normalize_polylist(t_fdf_poly_list *polylist)
 	t_fdf_poly_list	*list;
 	int				mx;
 	int				my;
+	int				mz;
 
 	list = polylist;
-	mx = 0;
-	my = 0;
+	mx = -100;
+	my = -100;
+	mz = -100;
 	while (list)
 	{
 		mx = fmax(mx, fmax(list->polygone->p0.x,
 		fmax(list->polygone->p1.x, list->polygone->p2.x)));
 		my = fmax(my, fmax(list->polygone->p0.y,
 		fmax(list->polygone->p1.y, list->polygone->p2.y)));
+		mz = fmax(mz, fmax(list->polygone->p0.z,
+		fmax(list->polygone->p1.z, list->polygone->p2.z)));
 		list = list->next;
 	}
 	list = polylist;
@@ -43,6 +47,9 @@ void				normalize_polylist(t_fdf_poly_list *polylist)
 		list->polygone->p0.y -= my / 2;
 		list->polygone->p1.y -= my / 2;
 		list->polygone->p2.y -= my / 2;
+		list->polygone->p0.z -= mz / 2;
+		list->polygone->p1.z -= mz / 2;
+		list->polygone->p2.z -= mz / 2;
 		list = list->next;
 	}
 }
@@ -53,6 +60,9 @@ void				window_initilize(t_fdf_window *win, char *filename)
 	win->height = WIN_HEIGTH;
 	win->mtrx_data = fdf_reader(filename);
 	win->mlx = mlx_init();
+	win->info.lines = 1;
+	win->info.perspective = -1;
+	win->info.polygones = -1;
 	win->ptr_win = mlx_new_window(win->mlx, win->width, win->height, "FdF");
 }
 

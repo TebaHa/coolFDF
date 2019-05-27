@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:34:44 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/18 19:34:50 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 09:15:00 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # define ISOMETRIA			34
 # define ZOOM_IN			69
 # define ZOOM_OUT			78
-# define LINES				37
-# define POLYGONES			35
+# define LINES				18
+# define POLYGONES			19
+# define PERSP				20
 
 #endif

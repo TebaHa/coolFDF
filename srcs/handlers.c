@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:06:49 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 03:15:55 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 09:19:46 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ int					zoom_handle(int key, void *param)
 		zoom_in(&img->scalex, &img->scaley, &img->scalez);
 	else if (key == ZOOM_OUT)
 		zoom_out(&img->scalex, &img->scaley, &img->scalez);
+	else if (key == LINES)
+		img->ptr_fdf_window->info.lines *= -1;
+	else if (key == PERSP)
+		img->ptr_fdf_window->info.perspective *= -1;
+	else if (key == POLYGONES)
+		img->ptr_fdf_window->info.polygones *= -1;
 	handle_draw(img);
 	return (0);
 }
@@ -71,4 +77,5 @@ void				handle_draw(t_fdf_image *img)
 	win_ptr = img->ptr_fdf_window->ptr_win;
 	image_ptr = img->ptr_img;
 	mlx_put_image_to_window(mlx, win_ptr, image_ptr, 0, 0);
+	put_info(img);
 }

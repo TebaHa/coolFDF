@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 04:44:16 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/27 09:11:48 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,21 @@ typedef struct				s_fdf_poly_list
 	struct	s_fdf_poly_list	*next;
 }							t_fdf_poly_list;
 
+typedef struct				s_fdf_info_block
+{
+	char					lines;
+	char					polygones;
+	char					perspective;
+}							t_fdf_info_block;
+
+
 typedef struct				s_fdf_window
 {
 	void					*ptr_win;
 	void					*mlx;
 	int						width;
 	int						height;
+	t_fdf_info_block		info;
 	t_fdf_matrix			*mtrx_data;
 }							t_fdf_window;
 
@@ -189,4 +198,7 @@ double						percent(int start, int end, int current);
 int							get_light(int start, int end, double percentage);
 int							get_color(int current, int start, int end, int colors[2]);
 
+int							print_check(t_fdf_poly polygon);
+void						draw(t_fdf_poly plg, t_fdf_image *img);
+void						put_info(t_fdf_image *img);
 #endif
