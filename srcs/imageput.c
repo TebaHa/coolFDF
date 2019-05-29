@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:14:07 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/18 18:19:20 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 15:00:25 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ void	point_swap(t_point *t0, t_point *t1)
 void	put_on_image(int x, int y, int color, t_fdf_image *image)
 {
 	size_t	offset;
+	int		*ptr;
 
-	offset = x * 4 + 4 * image->ptr_fdf_window->width * y;
-	(image->ptr_data)[offset] = (char)(color);
-	(image->ptr_data)[offset + 1] = (char)(color >> 8);
-	(image->ptr_data)[offset + 2] = (char)(color >> 16);
-	(image->ptr_data)[offset + 3] = (char)(color >> 24);
+	ptr = (int *)image->ptr_data;
+	offset = x + image->ptr_fdf_window->width * y;
+	ptr[offset] = color;
 }

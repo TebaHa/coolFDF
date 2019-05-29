@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/28 11:23:43 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 09:50:23 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void				normalize_polylist(t_fdf_poly_list *polylist)
 	int				mz;
 
 	list = polylist;
-	mx = -100;
-	my = -100;
-	mz = -100;
+	mx = -1000;
+	my = -1000;
+	mz = -1000;
 	while (list)
 	{
 		mx = fmax(mx, fmax(list->polygone->p0.x,
@@ -78,9 +78,9 @@ void				image_initilize(t_fdf_image *img)
 	img->anglex = 0;
 	img->angley = 0;
 	img->anglez = 0;
-	img->scalex = 8;
-	img->scaley = 8;
-	img->scalez = 8;
+	img->scalex = 1;
+	img->scaley = 1;
+	img->scalez = 1;
 	ft_bzero(img->ptr_data, img->size_line);
 	img->polygones = create_list_of_polygones(img->ptr_fdf_window->mtrx_data,
 	0xDDA0DD);

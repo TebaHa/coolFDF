@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:13:30 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 09:41:43 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 17:15:51 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,18 @@ void		bresenham_put_pixel(t_bcontex *c,
 {
 	if (((c->steep && ((c->x >= 0 && c->x < WIN_HEIGTH)
 	&& (c->y >= 0 && c->y < WIN_WIDTH) &&
-	(image->zbuffer[c->y + c->x * WIN_WIDTH] <= zmax)))
+	(image->zbuffer[c->y + c->x * WIN_WIDTH] < zmax + 1)))
 	|| (!c->steep && ((c->y >= 0 && c->y < WIN_HEIGTH)
 	&& (c->x >= 0 && c->x < WIN_WIDTH))
-	&& (image->zbuffer[c->x + c->y * WIN_WIDTH] <= zmax)))
+	&& (image->zbuffer[c->x + c->y * WIN_WIDTH] < zmax + 1)))
 	&& zmax < PERSPECTIVE)
 	{
-		if (c->dx > c->dy)
+		if (c->dx >= c->dy)
 			color = get_color(c->steep ? c->y : c->x,
-			0, c->dx > c->dy ? WIN_WIDTH * 0.8 : WIN_HEIGTH * 0.8,
-			(int[2]){0x00FFFF, 0xC9A0DC});
+			0, WIN_WIDTH * 0.8, (int[2]){0x00FFFF, 0xC9A0DC});
 		else
 			color = get_color(c->steep ? c->x : c->y,
-			0, c->dx > c->dy ? WIN_WIDTH * 0.8 : WIN_HEIGTH * 0.8,
-			(int[2]){0x00FFFF, 0xC9A0DC});
+			0, WIN_HEIGTH * 0.8, (int[2]){0x00FFFF, 0xC9A0DC});
 		put_on_image(c->steep ? c->y : c->x,
 		c->steep ? c->x : c->y, color, image);
 	}

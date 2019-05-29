@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:15:52 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 08:28:15 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 12:12:11 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ t_fdf_qternion	rotate_around(t_point axis, double angle)
 	return (res);
 }
 
-t_point			project_q(t_point *origin, t_fdf_qternion rot, double scales[3])
+t_point			calc_point(t_point *origin,
+								t_fdf_qternion rot, double scales[3])
 {
 	t_point a;
 	t_point	org;
 
-	org.x = origin->x * scales[0] * 2;
-	org.y = origin->y * scales[1] * 2;
-	org.z = origin->z * scales[2] * 2;
+	org.x = origin->x * scales[0];
+	org.y = origin->y * scales[1];
+	org.z = origin->z * scales[2];
 	a.x = (1 - 2 * pow(rot.y, 2) - 2.0 * pow(rot.z, 2)) * org.x
 	+ (2 * rot.x * rot.y - 2 * rot.w * rot.z) * org.y
 	+ (2 * rot.x * rot.z + 2 * rot.w * rot.y) * org.z;

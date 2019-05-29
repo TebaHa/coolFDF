@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:07:28 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 09:17:36 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 16:21:09 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ void				create_matrix_of_dots(int fd, t_fdf_matrix **mtrx)
 		}
 		i = -1;
 		while (dots[++i] != NULL)
-			free(dots[i]);
+			ft_strdel(&dots[i]);
 		y += 100;
 		matrix_append(mtrx, tmp);
+		ft_strdel(&line);
 	}
 }

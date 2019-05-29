@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:06:49 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 09:42:14 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 11:48:14 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void				rotate_helper(t_fdf_image *img)
 {
 	img->qtr = quaternion_multiply(
+		rotate_around((t_point){0, 0, 1}, img->anglez), img->qtr);
+	img->qtr = quaternion_multiply(
 		rotate_around((t_point){1, 0, 0}, img->anglex), img->qtr);
 	img->qtr = quaternion_multiply(
 		rotate_around((t_point){0, 1, 0}, img->angley), img->qtr);
-	img->qtr = quaternion_multiply(
-		rotate_around((t_point){0, 0, 1}, img->anglez), img->qtr);
 }
 
 int					rotate_handle(int key, void *param)

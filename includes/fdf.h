@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/28 10:57:55 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 13:05:44 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,15 +130,15 @@ typedef struct				s_fdf_image
 
 typedef struct				s_bcontex
 {
-	int			steep;
-	double		dx;
-	double		dy;
-	int			error2;
-	int			derror2;
-	int			x;
-	int			y;
-	t_point		b;
-	t_point		e;
+	int						steep;
+	double					dx;
+	double					dy;
+	int						error2;
+	int						derror2;
+	int						x;
+	int						y;
+	t_point					b;
+	t_point					e;
 }							t_bcontex;
 
 // INITILIZE
@@ -183,7 +183,7 @@ void						bresenham_line(t_point *beg, t_point *end, t_fdf_image *image, int col
 // QUATERION
 t_fdf_qternion				quaternion_multiply(t_fdf_qternion first, t_fdf_qternion second);
 t_fdf_qternion				rotate_around(t_point axis, double angle);
-t_point						project_q(t_point *origin, t_fdf_qternion rot, double scales[3]);
+t_point						calc_point(t_point *origin, t_fdf_qternion rot, double scales[3]);
 
 // JUNK
 void						ft_swap(int  *a, int *b);
