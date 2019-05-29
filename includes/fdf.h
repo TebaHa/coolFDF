@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 09:11:48 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/28 10:57:55 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,19 @@ typedef struct				s_fdf_image
 	t_fdf_qternion			qtr;
 	t_fdf_poly_list			*polygones;
 }							t_fdf_image;
+
+typedef struct				s_bcontex
+{
+	int			steep;
+	double		dx;
+	double		dy;
+	int			error2;
+	int			derror2;
+	int			x;
+	int			y;
+	t_point		b;
+	t_point		e;
+}							t_bcontex;
 
 // INITILIZE
 void						window_initilize(t_fdf_window *win, char *filename);

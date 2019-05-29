@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:07:28 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 08:46:16 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/05/29 09:17:36 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_fdf_list			*add_new_point(int x, int y, int z)
 	newlst = (t_fdf_list *)ft_memalloc(sizeof(t_fdf_list));
 	newlst->p.x = x;
 	newlst->p.y = y;
-	newlst->p.z = z;
+	newlst->p.z = z * 20;
 	newlst->next = NULL;
 	return (newlst);
 }
@@ -87,13 +87,13 @@ void				create_matrix_of_dots(int fd, t_fdf_matrix **mtrx)
 		i = 0;
 		while (dots[i] != NULL)
 		{
-			list_append(&(tmp->list), (i * 2), y, atoi(dots[i]));
+			list_append(&(tmp->list), (i * 100), y, atoi(dots[i]));
 			i++;
 		}
 		i = -1;
 		while (dots[++i] != NULL)
 			free(dots[i]);
-		y += 2;
+		y += 100;
 		matrix_append(mtrx, tmp);
 	}
 }
