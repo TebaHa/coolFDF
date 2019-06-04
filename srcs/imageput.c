@@ -6,13 +6,13 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:14:07 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 15:00:25 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 15:42:55 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-void	ft_swap(int  *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int tmp;
 

@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:32:04 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/21 20:11:32 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 16:01:50 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_fdf_vec3		cross_vec3(t_fdf_vec3 v1, t_fdf_vec3 v2)
 	v3normal.x = (v1.y * v2.z) - (v1.z * v2.y);
 	v3normal.y = (v1.z * v2.x) - (v1.x * v2.z);
 	v3normal.z = (v1.x * v2.y) - (v1.y * v2.x);
-
 	return (v3normal);
 }
 
@@ -30,7 +29,6 @@ t_fdf_vec3		create_vector(t_point *a, t_point *b)
 	vec3.x = a->x - b->x;
 	vec3.y = a->y - b->y;
 	vec3.z = a->z - b->z;
-
 	return (vec3);
 }
 

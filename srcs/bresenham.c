@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:13:30 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 17:15:51 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 15:43:09 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		triangle_lines(t_fdf_poly *t, t_fdf_image *image)
 {
-
 	if (t->p0.y == t->p1.y && t->p0.y == t->p2.y)
 		return ;
 	bresenham_line(&(t->p0), &(t->p1), image, t->color);

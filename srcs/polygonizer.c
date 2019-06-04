@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:29:02 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 08:39:13 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 16:12:16 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,10 @@ t_fdf_poly_list		*create_list_of_polygones(t_fdf_matrix *mtrx, int color)
 	t_fdf_matrix	*mtrx_prev;
 	t_fdf_matrix	*mtrx_curr;
 	t_fdf_poly_list	*list_tmp;
-	t_point			middle;
-	int				dcolor;
 
 	mtrx_curr = mtrx;
 	list_tmp = NULL;
-	dcolor = 5;
+	color = 5;
 	while (mtrx_curr->next != NULL)
 	{
 		mtrx_prev = mtrx_curr;
@@ -88,19 +86,10 @@ t_fdf_poly_list		*create_list_of_polygones(t_fdf_matrix *mtrx, int color)
 		lst2 = mtrx_prev->list;
 		while (lst1->next && lst2->next)
 		{
-			middle = calc_middle_point(&lst2->p, &lst1->p,
-								&lst2->next->p, &lst1->next->p);
-			add_polygone_to_list(&(list_tmp),
-			create_polygone(&lst1->p, &lst1->next->p, &middle, color));
-			add_polygone_to_list(&(list_tmp),
-			create_polygone(&lst1->p, &lst2->p, &middle, color));
-			add_polygone_to_list(&(list_tmp),
-			create_polygone(&lst2->p, &lst2->next->p, &middle, color));
-			add_polygone_to_list(&(list_tmp),
-			create_polygone(&lst1->next->p, &lst2->next->p, &middle, color));
+			add_polygones(lst1, lst2, &list_tmp, color);
 			lst1 = lst1->next;
 			lst2 = lst2->next;
-			dcolor *= 4;
+			color *= 4;
 		}
 	}
 	return (list_tmp);

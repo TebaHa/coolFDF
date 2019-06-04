@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:38:41 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 13:05:44 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 16:12:34 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define RED 0xFF4500
 # define WIN_WIDTH 2400
 # define WIN_HEIGTH 1200
-# define PERSPECTIVE 1500
+# define PERSPECTIVE 6397
 # include <stdlib.h>
 # include <stdio.h>
 # include <mlx.h>
@@ -141,6 +141,25 @@ typedef struct				s_bcontex
 	t_point					e;
 }							t_bcontex;
 
+typedef struct				s_triangle
+{
+	int			total_height;
+	int			second_half;
+	int			i;
+	int			j;
+	int			segment_height;
+	t_point		a;
+	t_point		b;
+	t_point		t0;
+	t_point		t1;
+	t_point		t2;
+	double		alpha;
+	double		beta;
+	double		intensity;
+	double		phi;
+	t_point		p;
+}							t_triangle;
+
 // INITILIZE
 void						window_initilize(t_fdf_window *win, char *filename);
 void						image_initilize(t_fdf_image *img);
@@ -189,6 +208,9 @@ t_point						calc_point(t_point *origin, t_fdf_qternion rot, double scales[3]);
 void						ft_swap(int  *a, int *b);
 void						point_swap(t_point *t0, t_point *t1);
 void						put_on_image(int x, int y, int color, t_fdf_image *image);
+void						recount(t_fdf_poly_list *p_list, int mx, int my, int mz);
+void						add_polygones(t_fdf_list *lst1, t_fdf_list *lst2,
+														t_fdf_poly_list **lstp, int color);
 
 //ROTATE
 void						rotate(t_fdf_image *img, t_fdf_poly_list *list, t_fdf_qternion q);
@@ -214,4 +236,9 @@ int							get_color(int current, int start, int end, int colors[2]);
 int							print_check(t_fdf_poly polygon);
 void						draw(t_fdf_poly plg, t_fdf_image *img);
 void						put_info(t_fdf_image *img);
+
+//VALIDATOR
+int							validate(t_fdf_matrix *mtrx);
+int							get_size(t_fdf_list *list);
+
 #endif

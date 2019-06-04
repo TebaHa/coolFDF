@@ -6,7 +6,7 @@
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/18 13:38:53 by zytrams           #+#    #+#              #
-#    Updated: 2019/05/27 09:13:05 by zytrams          ###   ########.fr        #
+#    Updated: 2019/06/04 15:23:23 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS_LIST =	fdf.c \
 			colorizer.c \
 			drawhandle.c \
 			info.c \
+			validator.c \
 
 MINILIB = $(MINILIB_DIRECTORY)libmlx.a
 MINILIB_DIRECTORY = ./lib/minilibx/sierra/

@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 09:50:23 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 15:49:05 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,7 @@ void				normalize_polylist(t_fdf_poly_list *polylist)
 	list = polylist;
 	while (list)
 	{
-		list->polygone->p0.x -= mx / 2;
-		list->polygone->p1.x -= mx / 2;
-		list->polygone->p2.x -= mx / 2;
-		list->polygone->p0.y -= my / 2;
-		list->polygone->p1.y -= my / 2;
-		list->polygone->p2.y -= my / 2;
-		list->polygone->p0.z -= mz / 2;
-		list->polygone->p1.z -= mz / 2;
-		list->polygone->p2.z -= mz / 2;
+		recount(list, mx, my, mz);
 		list = list->next;
 	}
 }
@@ -59,6 +51,11 @@ void				window_initilize(t_fdf_window *win, char *filename)
 	win->width = WIN_WIDTH;
 	win->height = WIN_HEIGTH;
 	win->mtrx_data = fdf_reader(filename);
+	if (validate(win->mtrx_data) == 0)
+	{
+		ft_putstr("Found wrong line length. Exiting.\n");
+		ft_exit(1);
+	}
 	win->mlx = mlx_init();
 	win->info.lines = 1;
 	win->info.perspective = -1;
