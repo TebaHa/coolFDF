@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:13:30 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/04 15:43:09 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/06 17:00:33 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void		bresenham_put_pixel(t_bcontex *c,
 	{
 		if (c->dx >= c->dy)
 			color = get_color(c->steep ? c->y : c->x,
-			0, WIN_WIDTH * 0.8, (int[2]){0x00FFFF, 0xC9A0DC});
+			0, WIN_WIDTH * 0.9, (int[2]){0x00FFFF, 0xC9A0DC});
 		else
 			color = get_color(c->steep ? c->x : c->y,
-			0, WIN_HEIGTH * 0.8, (int[2]){0x00FFFF, 0xC9A0DC});
+			0, WIN_HEIGTH * 0.9, (int[2]){0x00FFFF, 0xC9A0DC});
 		put_on_image(c->steep ? c->y : c->x,
 		c->steep ? c->x : c->y, color, image);
 	}

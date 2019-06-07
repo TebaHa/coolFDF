@@ -6,12 +6,12 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 19:34:44 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 09:15:00 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/04 18:07:19 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_MACROSES_H
-
+#ifndef MACROSES_H
+# define MACROSES_H
 # define MAIN_PAD_ESC		53
 # define ARROW_UP			126
 # define ARROW_DOWN			125

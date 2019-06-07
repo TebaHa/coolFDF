@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:29:02 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/04 16:12:16 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/05 18:16:10 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ t_fdf_poly_list		*create_polygone(t_point *t0, t_point *t1,
 	t_fdf_poly_list	*lst;
 
 	lst = (t_fdf_poly_list *)ft_memalloc(sizeof(t_fdf_poly_list));
+	if (lst == NULL)
+		ft_exit(1);
 	lst->polygone = (t_fdf_poly *)ft_memalloc(sizeof(t_fdf_poly));
+	if (lst->polygone == NULL)
+		ft_exit(1);
 	lst->next = NULL;
 	point_cpy(&(lst->polygone->p0), t0);
 	point_cpy(&(lst->polygone->p1), t1);

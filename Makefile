@@ -6,13 +6,13 @@
 #    By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/18 13:38:53 by zytrams           #+#    #+#              #
-#    Updated: 2019/06/04 15:23:23 by zytrams          ###   ########.fr        #
+#    Updated: 2019/06/05 16:31:17 by zytrams          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./lib/libft/

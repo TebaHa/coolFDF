@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:49:18 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/04 17:15:51 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/06 16:56:56 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,22 @@ void			add_polygones(t_fdf_list *lst1, t_fdf_list *lst2,
 	create_polygone(&lst2->p, &lst2->next->p, &middle, color));
 	add_polygone_to_list(lstp,
 	create_polygone(&lst1->next->p, &lst2->next->p, &middle, color));
+}
+
+void			free_fields(char **str_2d)
+{
+	int		i;
+
+	i = 0;
+	while (str_2d && str_2d[i])
+	{
+		free(str_2d[i]);
+		str_2d[i] = NULL;
+		i++;
+	}
+	if (str_2d)
+	{
+		free(str_2d);
+		str_2d = NULL;
+	}
 }

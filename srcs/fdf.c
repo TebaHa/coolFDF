@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:25:03 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/04 15:49:05 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/06/06 16:01:59 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ void				window_initilize(t_fdf_window *win, char *filename)
 
 void				image_initilize(t_fdf_image *img)
 {
-	img->zbuffer = (int *)malloc(sizeof(int) * WIN_WIDTH * WIN_HEIGTH);
+	img->zbuffer = (int *)ft_memalloc(sizeof(int) * WIN_WIDTH * WIN_HEIGTH);
+	if (img->zbuffer == NULL)
+		ft_exit(1);
 	img->ptr_img = mlx_new_image(img->ptr_fdf_window->mlx,
 	img->ptr_fdf_window->width, img->ptr_fdf_window->height);
 	img->ptr_data = mlx_get_data_addr(img->ptr_img,
