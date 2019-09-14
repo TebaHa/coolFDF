@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:20:08 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/06 22:14:50 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/08/05 12:37:23 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@ void			do_calc(t_triangle *trg)
 	trg->a.x = trg->t0.x + (trg->t2.x - trg->t0.x) * trg->alpha;
 	trg->a.y = trg->t0.y + (trg->t2.y - trg->t0.y) * trg->alpha;
 	trg->a.z = trg->t0.z + (trg->t2.z - trg->t0.z) * trg->alpha;
-	trg->b.x = trg->second_half ? trg->t1.x + (trg->t2.x - trg->t1.x)
-	* trg->beta : trg->t0.x + (trg->t1.x - trg->t0.x) * trg->beta;
-	trg->b.y = trg->second_half ? trg->t1.y + (trg->t2.y - trg->t1.y)
-	* trg->beta : trg->t0.y + (trg->t1.y - trg->t0.y) * trg->beta;
-	trg->b.z = trg->second_half ? trg->t1.z + (trg->t2.z - trg->t1.z)
-	* trg->beta : trg->t0.z + (trg->t1.z - trg->t0.z) * trg->beta;
+	trg->b.x = trg->second_half ? trg->t1.x + (trg->t2.x - trg->t1.x) * trg->beta : trg->t0.x + (trg->t1.x - trg->t0.x) * trg->beta;
+	trg->b.y = trg->second_half ? trg->t1.y + (trg->t2.y - trg->t1.y) * trg->beta : trg->t0.y + (trg->t1.y - trg->t0.y) * trg->beta;
+	trg->b.z = trg->second_half ? trg->t1.z + (trg->t2.z - trg->t1.z) * trg->beta : trg->t0.z + (trg->t1.z - trg->t0.z) * trg->beta;
 	if (trg->a.x > trg->b.x)
 		point_swap(&trg->a, &trg->b);
 	trg->j = trg->a.x;
