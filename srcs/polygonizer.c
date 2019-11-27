@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 17:29:02 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/05 18:16:10 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/11/27 05:07:30 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void				point_cpy(t_point *to, t_point *from)
 	to->z = from->z;
 }
 
-t_fdf_poly_list		*create_polygone(t_point *t0, t_point *t1,
-											t_point *t2, int color)
+t_fdf_poly_list		*create_polygone(t_point *dots[3],
+					t_tpos pstatus, int color)
 {
 	t_fdf_poly_list	*lst;
 
@@ -31,11 +31,12 @@ t_fdf_poly_list		*create_polygone(t_point *t0, t_point *t1,
 	if (lst->polygone == NULL)
 		ft_exit(1);
 	lst->next = NULL;
-	point_cpy(&(lst->polygone->p0), t0);
-	point_cpy(&(lst->polygone->p1), t1);
-	point_cpy(&(lst->polygone->p2), t2);
+	point_cpy(&(lst->polygone->p0), dots[0]);
+	point_cpy(&(lst->polygone->p1), dots[1]);
+	point_cpy(&(lst->polygone->p2), dots[2]);
 	lst->polygone->color = color;
 	lst->polygone->normal = calc_normal(lst->polygone);
+	lst->polygone->pos_status = pstatus;
 	return (lst);
 }
 

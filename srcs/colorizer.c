@@ -6,34 +6,34 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 23:12:23 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/27 01:17:23 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/11/27 05:01:32 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-double		percent(int start, int end, int current)
+float		percent(int start, int end, int current)
 {
-	double placement;
-	double distance;
+	float placement;
+	float distance;
 
 	placement = current - start;
 	distance = end - start;
 	return ((distance == 0) ? 1.0 : (placement / distance));
 }
 
-int			get_light(int start, int end, double percentage)
+int			get_light(int start, int end, float percentage)
 {
 	return ((int)((1 - percentage) * start + percentage * end));
 }
 
 int			get_color(int current, int start,
-										int end, int colors[2])
+			int end, int colors[2])
 {
 	int		red;
 	int		green;
 	int		blue;
-	double	percentage;
+	float	percentage;
 
 	percentage = percent(start, end, current);
 	red = get_light((colors[0] >> 16)

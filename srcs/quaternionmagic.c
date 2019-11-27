@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:15:52 by zytrams           #+#    #+#             */
-/*   Updated: 2019/05/29 12:12:11 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/11/27 05:01:32 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ t_fdf_qternion	quaternion_multiply(t_fdf_qternion first, t_fdf_qternion second)
 	return (res);
 }
 
-t_fdf_qternion	rotate_around(t_point axis, double angle)
+t_fdf_qternion	rotate_around(t_point axis, float angle)
 {
 	t_fdf_qternion	res;
 
 	angle = angle * M_PI / 180.0;
 	res.w = cos(angle / 2);
-	res.x = ((double)axis.x) * sin(angle / 2);
-	res.y = ((double)axis.y) * sin(angle / 2);
-	res.z = ((double)axis.z) * sin(angle / 2);
+	res.x = ((float)axis.x) * sin(angle / 2);
+	res.y = ((float)axis.y) * sin(angle / 2);
+	res.z = ((float)axis.z) * sin(angle / 2);
 	return (res);
 }
 
 t_point			calc_point(t_point *origin,
-								t_fdf_qternion rot, double scales[3])
+								t_fdf_qternion rot, float scales[3])
 {
 	t_point a;
 	t_point	org;

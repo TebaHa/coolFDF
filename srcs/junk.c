@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 21:49:18 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/06 16:56:56 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/11/27 05:08:40 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,12 @@ void			recount(t_fdf_poly_list *p_list, int mx, int my, int mz)
 void			add_polygones(t_fdf_list *lst1, t_fdf_list *lst2,
 										t_fdf_poly_list **lstp, int color)
 {
-	t_point		middle;
-
-	middle = calc_middle_point(&lst2->p, &lst1->p,
-								&lst2->next->p, &lst1->next->p);
 	add_polygone_to_list(lstp,
-	create_polygone(&lst1->p, &lst1->next->p, &middle, color));
+	create_polygone((t_point *[3]){&lst1->p, &lst1->next->p, &lst2->p},
+	LEFT, color));
 	add_polygone_to_list(lstp,
-	create_polygone(&lst1->p, &lst2->p, &middle, color));
-	add_polygone_to_list(lstp,
-	create_polygone(&lst2->p, &lst2->next->p, &middle, color));
-	add_polygone_to_list(lstp,
-	create_polygone(&lst1->next->p, &lst2->next->p, &middle, color));
+	create_polygone((t_point *[3]){&lst2->p, &lst1->next->p, &lst2->next->p},
+	RIGHT, color));
 }
 
 void			free_fields(char **str_2d)

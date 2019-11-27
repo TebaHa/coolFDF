@@ -6,7 +6,7 @@
 /*   By: zytrams <zytrams@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:32:04 by zytrams           #+#    #+#             */
-/*   Updated: 2019/06/04 16:01:50 by zytrams          ###   ########.fr       */
+/*   Updated: 2019/11/27 05:01:32 by zytrams          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_fdf_vec3		create_vector(t_point *a, t_point *b)
 	return (vec3);
 }
 
-double			magnitude(t_fdf_vec3 *normal)
+float			magnitude(t_fdf_vec3 *normal)
 {
 	return (sqrt((normal->x * normal->x) +
 	(normal->y * normal->y) + (normal->z * normal->z)));
@@ -40,7 +40,7 @@ double			magnitude(t_fdf_vec3 *normal)
 
 void			normalize_vec3(t_fdf_vec3 *normal)
 {
-	double	magn;
+	float	magn;
 
 	magn = magnitude(normal);
 	normal->x /= magn;
